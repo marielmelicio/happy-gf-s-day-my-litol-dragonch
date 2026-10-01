@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>happy gf's day, beh ko 💌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- ══════════════════════
+       PAGE 1 — PASSCODE LOCK
+  ══════════════════════ -->
+  <div class="page" id="page-lock" style="display:flex">
+    <div class="gingham"></div>
+    <div class="card lock-card">
+      <h2 class="lock-title">Enter Code</h2>
+      <div class="code-row" id="codeDisplay">
+        <span class="code-box heart" id="cd0">♥</span>
+        <span class="code-box heart" id="cd1">♥</span>
+        <span class="code-box heart" id="cd2">♥</span>
+        <span class="code-box heart" id="cd3">♥</span>
+      </div>
+      <p class="hint-text">hint: the day you finally said "yes" to me.</p>
+      <div class="numpad">
+        <button onclick="key('1')">1</button>
+        <button onclick="key('2')">2</button>
+        <button onclick="key('3')">3</button>
+        <button onclick="key('4')">4</button>
+        <button onclick="key('5')">5</button>
+        <button onclick="key('6')">6</button>
+        <button onclick="key('7')">7</button>
+        <button onclick="key('8')">8</button>
+        <button onclick="key('9')">9</button>
+        <button onclick="key('.')">.</button>
+        <button onclick="key('0')">0</button>
+        <button class="del" onclick="del()">DEL</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WRONG popup -->
+  <div class="overlay" id="wrongOverlay">
+    <div class="popup">
+      <p class="pop-title red-text">oooopx wrong ka po baby</p>
+      <div class="pop-bear" id="wrongBear">
+        <img src="ckret1.jpg" class="pop-img" alt="wrong" onerror="this.style.display='none';document.getElementById('wrongEmoji').style.display='block'"/>
+        <span id="wrongEmoji" style="display:none;font-size:4rem">🐻</span>
+      </div>
+      <p class="pop-sub">try again?</p>
+      <button class="pop-btn red-btn" onclick="closeWrong()">try again</button>
+    </div>
+  </div>
+
+  <!-- CORRECT popup -->
+  <div class="overlay" id="correctOverlay">
+    <div class="popup">
+      <p class="pop-title green-text">wowch tama, ang galing! </p>
+      <div class="pop-bear" id="correctBear">
+        <img src="ckret.jpg" class="pop-img" alt="correct" onerror="this.style.display='none';document.getElementById('correctEmoji').style.display='block'"/>
+        <span id="correctEmoji" style="display:none;font-size:4rem">🐻</span>
+      </div>
+      <p class="pop-sub">congrats you passed!</p>
+      <button class="pop-btn green-btn" onclick="proceed()">proceed</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════
+       PAGE 2 — YOU'VE GOT MAIL
+  ══════════════════════ -->
+  <div class="page" id="page-mail" style="display:none">
+    <div class="gingham"></div>
+    <div class="mail-center">
+      <h2 class="mail-title">you've got a mail!</h2>
+      <div class="envelope" id="envelope" onclick="openEnvelope()">
+        <div class="env-flap" id="envFlap"></div>
+        <div class="env-body">
+          <div class="env-seal">
+            <svg viewBox="0 0 70 70" width="68" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="35" cy="35" r="33" fill="#7a0000"/>
+              <circle cx="35" cy="35" r="26" fill="#9b1111" stroke="#c0392b" stroke-width="1.5"/>
+              <text x="35" y="42" text-anchor="middle" font-size="24" fill="#ffccc0" font-family="Georgia,serif" font-style="italic">L</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <p class="hint-text">click the seal to open!</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════
+       PAGE 3 — LETTER REVEAL
+  ══════════════════════ -->
+  <div class="page" id="page-reveal" style="display:none">
+    <div class="gingham"></div>
+    <div class="reveal-wrap" onclick="goTo('page-music')">
+      <div class="reveal-card">
+        <!-- lily bouquet SVG -->
+        <div class="bouquet-wrap">
+          <svg viewBox="0 0 200 155" xmlns="http://www.w3.org/2000/svg" width="155">
+            <path d="M100 150 C98 125 95 100 98 75" stroke="#4a7a22" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M100 150 C110 122 118 97 114 70" stroke="#4a7a22" stroke-width="2" fill="none"/>
+            <path d="M100 150 C90 122 82 97 86 70" stroke="#4a7a22" stroke-width="2" fill="none"/>
+            <path d="M80 135 Q100 128 120 135 Q100 143 80 135Z" fill="#c0392b" opacity="0.8"/>
+            <path d="M98 50 C92 36 88 18 98 2 C108 18 104 36 98 50Z" fill="#c0392b" opacity="0.93"/>
+            <path d="M98 50 C108 40 124 26 134 10 C120 24 108 40 98 50Z" fill="#d44040" opacity="0.88"/>
+            <path d="M98 50 C108 52 126 57 136 52 C122 46 108 46 98 50Z" fill="#c0392b" opacity="0.93"/>
+            <path d="M98 50 C92 60 88 80 98 96 C108 80 104 60 98 50Z" fill="#d44040" opacity="0.88"/>
+            <path d="M98 50 C88 52 70 57 60 52 C74 46 88 46 98 50Z" fill="#c0392b" opacity="0.93"/>
+            <path d="M98 50 C88 40 72 26 62 10 C76 24 88 40 98 50Z" fill="#d44040" opacity="0.88"/>
+            <circle cx="98" cy="50" r="8" fill="#6b0000"/>
+            <path d="M114 44 C109 32 106 16 114 2 C122 16 119 32 114 44Z" fill="#c0392b" opacity="0.88"/>
+            <path d="M114 44 C122 36 134 22 142 8 C132 20 122 36 114 44Z" fill="#d44040" opacity="0.82"/>
+            <path d="M114 44 C122 46 134 50 142 46 C132 40 122 40 114 44Z" fill="#c0392b" opacity="0.88"/>
+            <path d="M114 44 C109 52 106 70 114 82 C122 70 119 52 114 44Z" fill="#d44040" opacity="0.82"/>
+            <path d="M114 44 C108 46 96 50 88 46 C98 40 108 40 114 44Z" fill="#c0392b" opacity="0.88"/>
+            <circle cx="114" cy="44" r="7" fill="#6b0000"/>
+            <path d="M83 43 C78 31 75 15 83 1 C91 15 88 31 83 43Z" fill="#c0392b" opacity="0.88"/>
+            <path d="M83 43 C91 35 103 21 111 8 C101 20 91 35 83 43Z" fill="#d44040" opacity="0.82"/>
+            <path d="M83 43 C91 45 104 48 112 45 C102 39 91 39 83 43Z" fill="#c0392b" opacity="0.88"/>
+            <path d="M83 43 C78 51 75 67 83 79 C91 67 88 51 83 43Z" fill="#d44040" opacity="0.82"/>
+            <path d="M83 43 C77 45 64 48 56 45 C66 39 77 39 83 43Z" fill="#c0392b" opacity="0.88"/>
+            <circle cx="83" cy="43" r="7" fill="#6b0000"/>
+          </svg>
+        </div>
+        <h1 class="reveal-title">happy<br/>girlfriend's day,</h1>
+        <p class="reveal-sub">my litol dragonch💕</p>
+        <p class="reveal-tap">tap anywhere to continue</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════
+       PAGE 4 — MUSIC
+  ══════════════════════ -->
+  <div class="page" id="page-music" style="display:none">
+    <div class="gingham"></div>
+    <div class="music-wrap">
+      <div class="music-flowers"></div>
+      <p class="music-label">this song reminds me of you.</p>
+      <div class="audio-player">
+        <div class="audio-cover">
+          <img src="aeriel.jpg" alt="" style="width:100px;height:100px;object-fit:cover;border-radius:50%;border:3px solid rgba(255,255,255,0.4);box-shadow:0 4px 16px rgba(0,0,0,0.3);"/>
+        </div>
+        <div class="audio-info">
+          <p class="audio-title">Sa Bawat Sandali</p>
+          <p class="audio-artist">Amiel Sol</p>
+        </div>
+        <audio id="audioPlayer" controls>
+          <source src="Sa Bawat Sandali - Amiel Sol (Official Audio).mp3" type="audio/mpeg"/>
+        </audio>
+      </div>
+      <p class="music-hint">play first before continue! </p>
+      <button class="gingham-btn" onclick="goTo('page-scrapbook')">continue →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════
+       PAGE 5 — SCRAPBOOK
+  ══════════════════════ -->
+  <div class="page scroll-page" id="page-scrapbook" style="display:none">
+    <div class="gingham"></div>
+    <div class="scrap-wrap">
+
+      <!-- top quote -->
+      <p class="scrap-top-quote">thank you for being my happiness, my comfort, and my favorite person.</p>
+
+      <!-- scrapbook canvas -->
+      <div class="scrapbook">
+
+        <!-- 5 stamp photos -->
+        <div class="sphoto sp1"><img src="baby1.jpg" alt=""/></div>
+        <div class="sphoto sp2"><img src="baby2.jpg" alt=""/></div>
+        <div class="sphoto sp3"><img src="baby4.jpg" alt=""/></div>
+        <div class="sphoto sp4"><img src="baby3.jpg" alt=""/></div>
+        <div class="sphoto sp5"><img src="baby5.jpg" alt=""/></div>
+
+        <!-- handwritten texts -->
+        <div class="hw hw1">i hope you always feel loved, appreciated, and understood, even on days when you don't feel like yourself.</div>
+        <div class="hw hw2">i'll always support your dreams, baby. never feel guilty for choosing your growth because i'll always be proud of you.</div>
+        <div class="hw hw3">you don't have to be perfect around me. i love you even on your tired, quiet, and not-so-good days.</div>
+        <div class="hw hw4">i hope my love gives you comfort and not pressure. take your time, grow at your own pace, and i'll always be cheering for you.</div>
+        <div class="hw hw5">i may not always know the right words to say, but i'll always do my best to understand you and make you feel appreciated.</div>
+
+        <!-- shamrocks -->
+        <span class="stk" style="top:36%;left:25%;font-size:1.8rem;transform:rotate(-10deg)">🍀</span>
+        <span class="stk" style="top:60%;left:25%;font-size:1.5rem;transform:rotate(8deg)">🍀</span>
+
+      </div>
+
+      <button class="gingham-btn scrap-btn" onclick="goTo('page-letter')">read my letter →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════
+       PAGE 6 — LETTER
+  ══════════════════════ -->
+  <div class="page scroll-page" id="page-letter" style="display:none">
+    <div class="gingham"></div>
+    <div class="letter-wrap">
+      <h3 class="letter-heading">happy girlfriend's day, my litol dragonch! </h3>
+      <div class="letter-body">
+        <p>today, i just want to remind you that you are someone worth choosing every day. not because you have to be the best or because you always know what to do, but simply because you are you. i want you to feel that you can be yourself around me without worrying if you're doing enough. you don't have to prove anything to deserve my love and care.</p>
+        <p>i hope you always remember that your feelings matter to me. when you're tired, i want you to rest, and when things get heavy, i want you to know that you don't have to handle everything alone. i may not always know the right words to say, but i'll always try to understand you and be there for you in the ways i can.</p>
+        <p>i hope today reminds you that you're not just someone's girlfriend, but also someone who deserves to be loved gently, treated right, and appreciated every single day. you don't have to do anything special to make yourself worth loving. being you is already enough, and i hope you never forget that.</p>
+        <p>if i could give you one thing today, it would be the chance to see yourself through my eyes. maybe then you would understand just how special you are to me, and why i appreciate you more than i sometimes know how to say.</p>
+        <p>happy girlfriend's day, baby. i'm so thankful that life gave me someone like you to love. i hope you never forget how precious you are to me. no matter how simple the day is, i hope you always feel how much you are loved and appreciated. i love you, my pretty girl. </p>
+      </div>
+      <button class="back-btn" onclick="goTo('page-scrapbook')">← back</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
